@@ -1,0 +1,22 @@
+.f2{
+    font-family: 'Courier New', Courier, monospace;
+    color:crimson;
+
+}
+.bg{
+    background-color: rgb(15, 104, 104);
+    
+}
+.space{
+
+    margin-bottom: 60px;
+}
+.detahlesEvento{
+    box-shadow: 0px 0px 5px grey;
+    padding-top: 20px;
+    padding-left: 20px;
+    margin-bottom: 60px;
+}
+
+
+

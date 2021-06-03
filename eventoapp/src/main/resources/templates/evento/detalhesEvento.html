@@ -1,0 +1,87 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"l>
+   <div class="light-blue.darken-2"> 
+  <head>
+      <title>EventosApp</title>
+      <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="materialize-v1.0.0/materialize/css/materialize.min.css"  media="screen,projection"/>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="style/assets/css/evento.css">
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="nav-wrapper bg">
+          <a href="#!" class="brand-logo f2">Detalhes do evento</a>
+          <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+          <ul class="right hide-on-med-and-down">
+            <li><a href="/eventos" class="waves-effect waves-light btn"><i class="material-icons   left">list</i>Lista de Eventos</a></li>
+            <li><a href="/eventos" class="waves-effect waves-light btn"><i class="material-icons   left">add_circle</i>Cadastrar evento</a></li>
+           
+          </ul>
+          
+        </div>
+      </nav>
+      <ul class="sidenav" id="mobile-demo">
+        <li><a href="/eventos">Lista de eventos</a></li>
+        <li><a href="/cadastrarEvento">Cadastrar evento</a></li>
+      </ul>
+    </header>
+    <h2 class="f2 center   "><span th:text="${evento.nome}"></span></h2>
+    <div  th:each="evento: ${evento}" class="container detalhesEvento">
+      
+
+       
+   
+    <div class="row ">
+      
+      <p>Local:<span th:text="${evento.local}"></span></p>
+      <p>Data:<span th:text="${evento.data}"></span></p>
+      <p>Horário<span th:text="${evento.horario}"></span></p>
+
+    </div>
+  </div>
+    <div th:if="${flashMessage != null}">
+    <div th:replace="mensagemValidacao :: alert (type=${flashType}, message=${flashMessage})"></div>
+</div>
+<div class="container">
+  <form class="container" method="post">
+    Nome:<input type="text" value="" name="nomeConvidado"/>
+    CPF:<input type="number" value="" name="cpf"/>
+    <button class="waves-effect waves-light btn" type="submit">Adicionar </button>
+
+    </form>
+</div>
+  
+  <h5 class="f2 center">Lista de Convidados</h5>
+  <table class="container">
+    <thead>
+      <tr>
+        <th>Nome convidado</th>
+        <th>CPF</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="convidado: ${convidados}">
+        <td><span th:text="${convidado.nomeConvidado}"></span></td>
+        <td><span th:text="${convidado.cpf}"></span></td>
+      </tr>
+    </tbody>
+    
+    
+  </table>
+	
+ <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+ <script type="text/javascript" src="materialize-v1.0.0/materialize/js/materialize.min.js"></script>
+ <script src="materialize-v1.0.0/materialize/js/event.js"></script>
+  </body>
+  </div>
+</html>
