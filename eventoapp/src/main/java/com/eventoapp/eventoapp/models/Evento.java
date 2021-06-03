@@ -12,7 +12,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
-//import javassist.SerialVersionUID;
+
 
 @Entity
 public class Evento implements Serializable {
