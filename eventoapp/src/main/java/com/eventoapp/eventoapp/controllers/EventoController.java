@@ -79,11 +79,35 @@ public class EventoController {
 		convidado.setEvento(evento);
 		cr.save(convidado);
 		return "redirect:/{codigo}";
+		
+	}
+	@RequestMapping("/deletarEvento")
+	public String deletarEvento(long codigo,@Validated Evento event, BindingResult result, RedirectAttributes attributes){
+		Evento evento= repository.findByCodigo(codigo);
+		attributes.addFlashAttribute("flashMessage", "Evento deletado com sucesso!");
+		attributes.addFlashAttribute("flashType", "success");
+		
+		repository.delete(evento);
+		return "redirect:/eventos";
+		
+	}
+	@RequestMapping("/deletarConvidado")
+	public String deletarConvidado(String cpf) {
+		Convidado convidado=cr.findByCpf(cpf);
+		cr.delete(convidado);
+		Evento evento=convidado.getEvento();
+		long codLong= evento.getCodigo();
+		String cod=" "+codLong;
+		return "redirect:/"+cod;
+		
+	}
+		
+		
 				
 		
 		
 		
-	}
+	
 	
 	
 
